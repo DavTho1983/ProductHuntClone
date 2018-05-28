@@ -5,7 +5,7 @@ from django.utils import timezone
 
 def home(request):
     products = Product.objects
-    return render(request, 'products/home.html', {'products':products})
+    return render(request, 'products/home.html', {'products': Product.objects.all().order_by('-votes_total')})
 
 @login_required
 def create(request):
